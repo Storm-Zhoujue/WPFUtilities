@@ -1,0 +1,108 @@
+﻿<Window x:Class="Examples.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Examples"
+        xmlns:a="http://attalo.com"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBlock"
+               x:Key="Headline">
+            <Setter Property="FontSize"
+                    Value="24" />
+            <Setter Property="FontFamily"
+                    Value="Segoe UI Light" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <TabControl x:Name="Tabs" Margin="10">
+            <TabControl.Items>
+                <TabItem Header="VisualCheckBox">
+                    <Grid Margin="5"
+                          Background="AliceBlue">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Visual Checkbox"
+                                   Style="{StaticResource Headline}"/>
+                        <a:VisualCheckBox x:Name="MyVisualCheckbox"
+                                          Grid.Row="1"
+                                          BorderBrush="Black" BorderThickness="1"
+                                          Margin="10"
+                                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                                          Width="120"
+                                          Height="Auto">
+
+                            <a:VisualCheckBox.IsCheckedContent>
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <Ellipse Fill="Green" Width="10" Height="10"/>
+                                    <TextBlock Margin="5,0" Text="I am checked." />
+                                </StackPanel>
+                            </a:VisualCheckBox.IsCheckedContent>
+                            <a:VisualCheckBox.IsUncheckedContent>
+                                <StackPanel Orientation="Horizontal"
+                                            Margin="5">
+                                    <Ellipse Fill="Red"
+                                             Width="10"
+                                             Height="10" />
+                                    <TextBlock Margin="5,0"
+                                               Text="I am unchecked." />
+                                </StackPanel>
+                            </a:VisualCheckBox.IsUncheckedContent>
+                        </a:VisualCheckBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="ColoredVectorImage">
+                    <Grid>
+
+                        <Grid.Resources>
+                            <DrawingImage x:Key="ic_factory"
+                                          x:Shared="False">
+                                <DrawingImage.Drawing>
+                                    <GeometryDrawing Geometry="M21.832001,24.424L21.832001,27.912998 26.218018,27.912998 26.218018,24.424z M13.757019,24.424L13.757019,27.912998 18.143005,27.912998 18.143005,24.424z M5.7820129,24.424L5.7820129,27.912998 10.167999,27.912998 10.167999,24.424z M1.8950195,6.3799964L3.8880005,6.3799964 4.1870117,17.745001 8.1750183,17.745001 8.1750183,13.956 16.050018,17.745001 16.149994,17.745001 16.149994,13.956 24.024994,17.745001 24.125,17.745001 24.125,13.956 32,17.745001 31.901001,17.745001 31.901001,31.103001 0,31.103001 0,17.745001 1.5950012,17.745001z M8.5740051,1.3959956C8.5740051,1.3959958 9.1719971,3.2899927 6.6800232,3.5889963 6.6800232,3.5889963 5.085022,3.6879953 4.2870178,4.4859993 4.2870178,4.4859993 3.9880066,4.7849952 3.8880005,4.4859993 3.8880005,4.4859993 3.9880066,3.0899958 6.480011,2.6919931 6.5800171,2.7909998 8.3740234,2.6919931 8.5740051,1.3959956z M5.5830078,0C5.5830078,-1.4470834E-07 6.8789978,1.4949948 4.5859985,2.6919931 4.5859985,2.6919931 3.1900024,3.2899927 2.6920166,4.3859931 2.6920166,4.3859931 2.5920105,4.7849952 2.2929993,4.4859993 2.2929993,4.4859993 1.8950195,3.1899942 4.0880127,1.8939967 4.1870117,1.9939953 5.882019,1.2959973 5.5830078,0z" />
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
+                            <DrawingImage x:Key="ic_excel"
+                                          x:Shared="False">
+                                <DrawingImage.Drawing>
+                                    <GeometryDrawing Geometry="M24.657059,21.64202L24.657059,24.793019 29.859102,24.793019 29.859102,21.64202z M24.657059,17.491021L24.657059,20.64202 29.859102,20.64202 29.859102,17.491021z M24.657059,13.340021L24.657059,16.491021 29.859102,16.491021 29.859102,13.340021z M13.054056,9.3130452L10.936008,9.421993 9.4030447,13.339044 7.9020019,9.7839925 5.8020201,9.7839925 8.0030155,14.915033 5.8040342,19.910025 7.6690302,20.058036 9.2030315,16.390984 10.803012,20.358023 10.804049,20.356986 13.272014,20.356986 10.53702,14.689996z M24.657059,9.1880452L24.657059,12.339045 29.859102,12.339045 29.859102,9.1880452z M24.657059,5.0370461L24.657059,8.1880452 29.859102,8.1880452 29.859102,5.0370461z M31.031412,3.4354717C31.182783,3.4359052,31.990089,3.497225,31.990089,4.7560403L31.990089,25.60204 31.989113,25.60204C31.989113,25.60204,32.17411,26.575001,30.946079,26.645009L19.072081,26.645009 19.072081,24.645009 23.606091,24.645009 23.606091,21.49401 19.072081,21.49401 19.072081,20.543021 23.606091,20.543021 23.606091,17.392022 19.072081,17.392022 19.072081,16.441033 23.606091,16.441033 23.606091,13.290033 19.072081,13.290033 19.072081,12.340022 23.606091,12.340022 23.606091,9.1890218 19.072081,9.1890218 19.072081,8.2390096 23.606091,8.2390096 23.606091,5.0870339 19.072081,5.0870339 19.072081,3.4360334 31.007114,3.4360334C31.007114,3.4360334,31.015755,3.4354267,31.031412,3.4354717z M18.405087,0L18.405087,30.476001 0,27.275014 0,3.0670151z" />
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
+                        </Grid.Resources>                       
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Colored Vector Image"
+                                   Style="{StaticResource Headline}" />
+                        <WrapPanel Grid.Row="1">
+                            <a:ColoredVectorImage Color="DarkSlateBlue"
+                                                  ImageSource="{StaticResource ic_factory}"
+                                                  Width="60" Margin="15" />
+                            <a:ColoredVectorImage Color="Black"
+                                                  ImageSource="{StaticResource ic_excel}"
+                                                  Width="60"
+                                                  Margin="15" />
+                            <a:ColoredVectorImage Color="Red"
+                                                  ImageSource="{StaticResource ic_excel}"
+                                                  Width="60"
+                                                  Margin="15" />
+                            <a:ColoredVectorImage Color="Goldenrod"
+                                                  ImageSource="{StaticResource ic_excel}"
+                                                  Width="60"
+                                                  Margin="15" />
+                        </WrapPanel>
+                        
+                    </Grid>
+                </TabItem>
+            </TabControl.Items>
+        </TabControl>
+    </Grid>
+</Window>

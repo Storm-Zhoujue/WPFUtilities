@@ -6,41 +6,17 @@ using System.Windows.Media;
 
 namespace Attalo.WPF
 {
-    /// <summary>
-    /// Follow steps 1a or 1b and then 2 to use this custom control in a XAML file.
-    ///
-    /// Step 1a) Using this custom control in a XAML file that exists in the current project.
-    /// Add this XmlNamespace attribute to the root element of the markup file where it is 
-    /// to be used:
-    ///
-    ///     xmlns:MyNamespace="clr-namespace:Attalo.WPF.Controls"
-    ///
-    ///
-    /// Step 1b) Using this custom control in a XAML file that exists in a different project.
-    /// Add this XmlNamespace attribute to the root element of the markup file where it is 
-    /// to be used:
-    ///
-    ///     xmlns:MyNamespace="clr-namespace:Attalo.WPF.Controls;assembly=Attalo.WPF.Controls"
-    ///
-    /// You will also need to add a project reference from the project where the XAML file lives
-    /// to this project and Rebuild to avoid compilation errors:
-    ///
-    ///     Right click on the target project in the Solution Explorer and
-    ///     "Add Reference"->"Projects"->[Browse to and select this project]
-    ///
-    ///
-    /// Step 2)
-    /// Go ahead and use your control in the XAML file.
-    ///
-    ///     <MyNamespace:ColoredVectorImage/>
-    ///
-    /// </summary>
-    [TemplatePart(Name = "PART_Image", Type = typeof(Image))]
+
+    [TemplatePart(Name = ImagePart, Type = typeof(Image))]
     public class ColoredVectorImage : Control, ICommandSource
     {
+
+        private const string ImagePart = "PART_Image";
+
         static ColoredVectorImage()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ColoredVectorImage), new FrameworkPropertyMetadata(typeof(ColoredVectorImage)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ColoredVectorImage), 
+                new FrameworkPropertyMetadata(typeof(ColoredVectorImage)));
 
             FrameworkPropertyMetadata meta = new FrameworkPropertyMetadata();
             meta.DefaultValue = new SolidColorBrush(Colors.Black);
@@ -54,6 +30,22 @@ namespace Attalo.WPF
 
 
         }
+
+        private Image _image;
+        protected Image Image
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
+                if (_image != null)
+                {
+                    _image.Source = this.ImageSource;
+                }
+            }
+        }
+
+
 
         public SolidColorBrush Color
         {
@@ -213,14 +205,11 @@ namespace Attalo.WPF
 
             if (this.Template != null)
             {
-                _image = this.Template.FindName("PART_Image", this) as Image;
-                if (_image != null)
-                {
-                    _image.Source = this.ImageSource;
-                }
+                Image = GetTemplateChild(ImagePart) as Image;
             }
         }
-        private Image _image;
+
+
 
     }
 }

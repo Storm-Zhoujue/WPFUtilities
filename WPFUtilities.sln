@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attalo.WPF", "Attalo.WPF\Attalo.WPF.csproj", "{68F0A1BB-42C6-4FBD-A96B-C144DB3FA90F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{64461B1C-3E5B-4B23-8177-F4030EA35D7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{68F0A1BB-42C6-4FBD-A96B-C144DB3FA90F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68F0A1BB-42C6-4FBD-A96B-C144DB3FA90F}.Release|x64.ActiveCfg = Release|x64
 		{68F0A1BB-42C6-4FBD-A96B-C144DB3FA90F}.Release|x64.Build.0 = Release|x64
+		{64461B1C-3E5B-4B23-8177-F4030EA35D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64461B1C-3E5B-4B23-8177-F4030EA35D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64461B1C-3E5B-4B23-8177-F4030EA35D7B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{64461B1C-3E5B-4B23-8177-F4030EA35D7B}.Debug|x64.Build.0 = Debug|Any CPU
+		{64461B1C-3E5B-4B23-8177-F4030EA35D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64461B1C-3E5B-4B23-8177-F4030EA35D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64461B1C-3E5B-4B23-8177-F4030EA35D7B}.Release|x64.ActiveCfg = Release|Any CPU
+		{64461B1C-3E5B-4B23-8177-F4030EA35D7B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
