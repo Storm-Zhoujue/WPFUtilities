@@ -1,0 +1,233 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Attalo.WPF">
+
+    <Style TargetType="{x:Type local:VisualCheckBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:VisualCheckBox}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                           >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Disabled"></VisualState>
+                                <VisualState x:Name="Enabled"></VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="IsChecked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_IsCheckedContent"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_IsUncheckedContent"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IsUnchecked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_IsUncheckedContent"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_IsCheckedContent"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="PART_LayoutRoot"
+                            Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <ContentPresenter x:Name="PART_IsCheckedContent" Margin="0"
+                                              Content="{TemplateBinding IsCheckedContent}" />
+                            <ContentPresenter x:Name="PART_IsUncheckedContent" Margin="0"
+                                              Content="{TemplateBinding IsUncheckedContent}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:AnimatedContentControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:AnimatedContentControl}">
+                    <Grid>
+                        <ContentPresenter 
+                        Content="{TemplateBinding Content}" 
+                        x:Name="PART_MainContent" />
+                        <Rectangle x:Name="PART_PaintArea" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:ColoredVectorImage}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ColoredVectorImage}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}">
+                        <Image x:Name="PART_Image" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:NumericUpdateVisualizer}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:NumericUpdateVisualizer}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Disabled"></VisualState>
+                                <VisualState x:Name="Enabled"></VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="StatusStates">
+                                <VisualState x:Name="IsIncreased">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Increase"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Decrease"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Unchanged"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IsUnchanged">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Increase"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Decrease"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Unchanged"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IsDecreased">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Increase"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Decrease"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Unchanged"
+                                            Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame 
+                                                KeyTime="0:0:0"
+                                                Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid>
+                            <Ellipse x:Name="PART_Unchanged"
+                                     Fill="#FFD3C018"
+                                     Visibility="Visible"
+                                     Stroke="Black" StrokeThickness="1"
+                                     Height="10"
+                                     Stretch="Uniform"
+                                     />
+                            <Path x:Name="PART_Decrease"
+                                Data="M0,0L32,0 16,19.7z" 
+                                Stretch="Uniform" 
+                                Fill="#FFA81227" 
+                                Stroke="Black" StrokeThickness="1"
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Stretch" >
+                            </Path>
+                            <Path x:Name="PART_Increase"
+                                  Data="M15.995972,0L32,21.478999 0,21.478999z" 
+                                  Stretch="Uniform" 
+                                  Fill="#FF448D3D"
+                                  Stroke="Black" StrokeThickness="1"
+                                  Visibility="Collapsed"
+                                  HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Stretch" >
+                            </Path>
+                        </Grid>
+                        <Border.ToolTip>
+                            <ToolTip>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=OriginalValue,
+                                    StringFormat=Original Value: {0}}" />
+                            </ToolTip>
+                        </Border.ToolTip>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>
